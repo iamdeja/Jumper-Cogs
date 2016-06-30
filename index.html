@@ -46,12 +46,19 @@
 
 
 
-<script type="text/javascript" src="ZeroClipboard.js"></script>
-<textarea name="box-content" id="box-content" rows="5" cols="70">
-	The David Walsh Blog is the best blog around!  MooTools FTW!
-</textarea>
-<br /><br />
-<p><input type="button" id="copy" name="copy" value="Copy to Clipboard" /></p>
+//set path
+ZeroClipboard.setMoviePath('https://davidwalsh.name/demo/ZeroClipboard.swf');
+//create client
+var clip = new ZeroClipboard.Client();
+//event
+clip.addEventListener('mousedown',function() {
+	clip.setText(document.getElementById('box-content').value);
+});
+clip.addEventListener('complete',function(client,text) {
+	alert('copied: ' + text);
+});
+//glue it to the button
+clip.glue('copy');
 
 <h3>
 <a id="creating-pages-manually" class="anchor" href="#creating-pages-manually" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Creating pages manually</h3>
