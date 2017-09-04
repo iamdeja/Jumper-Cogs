@@ -1238,7 +1238,7 @@ class Casino:
         await self.bot.say(_("You are currently running Casino version {}.").format(self.version))
 
     @casino.command(name="cdreset", pass_context=True)
-    @checks.admin_or_permissions(manage_server=True)
+    @checks.admin_or_permissions()
     async def _cdreset_casino(self, ctx):
         """Resets all cooldowns on the server"""
         server = ctx.message.server
@@ -1252,7 +1252,7 @@ class Casino:
         await self.bot.say(_("Cooldowns have been reset for all users on this server."))
 
     @casino.command(name="removemembership", pass_context=True)
-    @checks.admin_or_permissions(manage_server=True)
+    @checks.admin_or_permissions()
     async def _removemembership_casino(self, ctx, *, membership):
         """Remove a casino membership"""
         author = ctx.message.author
@@ -1267,7 +1267,7 @@ class Casino:
         await self.bot.say(msg)
 
     @casino.command(name="createmembership", pass_context=True)
-    @checks.admin_or_permissions(manage_server=True)
+    @checks.admin_or_permissions()
     async def _createmembership_casino(self, ctx):
         """Add a casino membership to reward continued play"""
 
@@ -1417,7 +1417,7 @@ class Casino:
             await self.bot.say(msg)
 
     @casino.command(name="reset", pass_context=True)
-    @checks.admin_or_permissions(manage_server=True)
+    @checks.serverowner_or_permissions()
     async def _reset_casino(self, ctx):
         """Resets casino to default settings. Keeps user data"""
 
@@ -1491,7 +1491,7 @@ class Casino:
                 await self.bot.say(_("{} does not have any chips pending.").format(user.name))
 
     @casino.command(name="removeuser", pass_context=True)
-    @checks.admin_or_permissions(manage_server=True)
+    @checks.admin_or_permissions()
     async def _removeuser_casino(self, ctx, user: discord.Member):
         """Remove a user from casino"""
         author = ctx.message.author
@@ -1647,7 +1647,7 @@ class Casino:
         await self.bot.say(msg)
 
     @setcasino.command(name="payday", pass_context=True)
-    @checks.admin_or_permissions(manage_server=True)
+    @checks.admin_or_permissions()
     async def _payday_setcasino(self, ctx, amount: int):
         """Set the default payday amount with no membership
 
@@ -1672,7 +1672,7 @@ class Casino:
         await self.bot.say(msg)
 
     @setcasino.command(name="paydaytimer", pass_context=True)
-    @checks.admin_or_permissions(manage_server=True)
+    @checks.admin_or_permissions()
     async def _paydaytimer_setcasino(self, ctx, seconds: int):
         """Set the cooldown on payday
 
@@ -1840,7 +1840,7 @@ class Casino:
                                                                                membership))
 
     @setcasino.command(name="balance", pass_context=True)
-    @checks.admin_or_permissions(manage_server=True)
+    @checks.admin_or_permissions()
     async def _balance_setcasino(self, ctx, user: discord.Member, chips: int):
         """Sets a Casino member's chip balance"""
         author = ctx.message.author
@@ -1861,7 +1861,7 @@ class Casino:
                                  "{} {} chips.```").format(user.name, chips, chip_name))
 
     @setcasino.command(name="exchange", pass_context=True)
-    @checks.admin_or_permissions(manage_server=True)
+    @checks.admin_or_permissions()
     async def _exchange_setcasino(self, ctx, rate: float, currency: str):
         """Sets the exchange rate for chips or credits"""
         author = ctx.message.author
